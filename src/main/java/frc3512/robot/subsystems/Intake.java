@@ -13,7 +13,6 @@ import frc3512.robot.Constants;
 
 public class Intake extends SubsystemBase {
 
-  boolean timeToShoot = false;
   Timer conveyorTimer;
 
   CANSparkMax m_conveyorMotor =
@@ -85,20 +84,12 @@ public class Intake extends SubsystemBase {
     return m_conveyorMotor.get() > 0.0;
   }
 
-  public void setTimeToShoot(boolean shootNow) {
-    timeToShoot = shootNow;
-  }
-
   public boolean isUpperSensorBlocked() {
     return !m_upperSensor.get();
   }
 
   public boolean isLowerSensorBlocked() {
     return !m_lowerSensor.get();
-  }
-
-  public boolean isTimeToShoot() {
-    return timeToShoot;
   }
 
   public void resetTimer() {
