@@ -35,15 +35,10 @@ public class Climber extends SubsystemBase {
 
   boolean m_ignoreLimits = false;
 
-  NetworkTableEntry m_leftElevatorEncoderEntry =
-      NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Climber/Left Elevator Encoder");
-  NetworkTableEntry m_rightElevatorEncoderEntry =
-      NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Climber/Right Elevator Encoder");
-
   NetworkTableEntry m_leftTopSwitchEntry =
-      NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Climber/Left Top Switch");
+      NetworkTableUtil.MakeBoolEntry("/Diagnostics/Climber/Left At Switch");
   NetworkTableEntry m_rightTopSwitchEntry =
-      NetworkTableUtil.MakeDoubleArrayEntry("/Diagnostics/Climber/Right Top Switch");
+      NetworkTableUtil.MakeBoolEntry("/Diagnostics/Climber/Right At Switch");
 
   /** Subsystem class for the climber */
   public Climber() {
@@ -97,5 +92,8 @@ public class Climber extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {}
+  public void periodic() {
+    m_leftTopSwitchEntry.setBoolean(hasLeftPassedTopLimit());
+    m_rightTopSwitchEntry.setBoolean(hasRightPassedTopLimit());
+  }
 }
