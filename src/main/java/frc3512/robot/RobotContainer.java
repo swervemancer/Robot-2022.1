@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc3512.robot.commands.climbers.DeployClimbers;
+import frc3512.robot.commands.climbers.RunClimbers;
 import frc3512.robot.commands.intake.DeployIntake;
 import frc3512.robot.commands.intake.IntakeCargo;
 import frc3512.robot.commands.intake.OuttakeCargo;
@@ -61,12 +61,10 @@ public class RobotContainer {
   /** Used for joystick/xbox axis actions. */
   private void configureAxisActions() {
     m_climber.setDefaultCommand(
-        new RunCommand(
-            () ->
-                m_climber.setClimbers(
-                    MathUtil.applyDeadband(m_appendageStick1.getRawAxis(1), 0.1) * 0.8,
-                    MathUtil.applyDeadband(m_appendageStick2.getRawAxis(1), 0.1) * 0.76),
-            m_climber));
+        new RunClimbers(
+            m_climber,
+            () -> MathUtil.applyDeadband(m_appendageStick1.getRawAxis(1), 0.1) * 0.8,
+            () -> MathUtil.applyDeadband(m_appendageStick2.getRawAxis(1), 0.1) * 0.76));
   }
 
   /** Adds in autonomous modes */
