@@ -25,7 +25,7 @@ public class CANSparkMaxUtil {
    *     constructed.
    * @param enableFollowing Whether to enable motor following.
    */
-  public static void SetCANSparkMaxBusUsage(
+  public static void setCANSparkMaxBusUsage(
       CANSparkMax motor, Usage usage, boolean enableFollowing) {
     if (enableFollowing) {
       motor.setPeriodicFramePeriod(CANSparkMaxLowLevel.PeriodicFrame.kStatus0, 10);
@@ -64,7 +64,7 @@ public class CANSparkMaxUtil {
    * @param usage The status frame feedack to enable. kAll is the default when a CANSparkMax is
    *     constructed.
    */
-  public static void SetCANSparkMaxBusUsage(CANSparkMax motor, Usage usage) {
-    SetCANSparkMaxBusUsage(motor, usage, false);
+  public static void setCANSparkMaxBusUsage(CANSparkMax motor, Usage usage) {
+    setCANSparkMaxBusUsage(motor, usage, false);
   }
 }

@@ -42,9 +42,9 @@ public class Climber extends SubsystemBase {
 
   /** Subsystem class for the climber */
   public Climber() {
-    CANSparkMaxUtil.SetCANSparkMaxBusUsage(m_leftGrbx, Usage.kPositionOnly);
+    CANSparkMaxUtil.setCANSparkMaxBusUsage(m_leftGrbx, Usage.kPositionOnly);
     m_leftGrbx.setSmartCurrentLimit(40);
-    CANSparkMaxUtil.SetCANSparkMaxBusUsage(m_rightGrbx, Usage.kPositionOnly);
+    CANSparkMaxUtil.setCANSparkMaxBusUsage(m_rightGrbx, Usage.kPositionOnly);
     m_rightGrbx.setSmartCurrentLimit(40);
   }
 

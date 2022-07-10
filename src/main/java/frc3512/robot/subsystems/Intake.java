@@ -29,11 +29,11 @@ public class Intake extends SubsystemBase {
 
   /** Subsystem class for the intake */
   public Intake() {
-    CANSparkMaxUtil.SetCANSparkMaxBusUsage(m_miniArmMotor, Usage.kMinimal);
+    CANSparkMaxUtil.setCANSparkMaxBusUsage(m_miniArmMotor, Usage.kMinimal);
     m_miniArmMotor.setSmartCurrentLimit(80);
-    CANSparkMaxUtil.SetCANSparkMaxBusUsage(m_intakeMotor, Usage.kMinimal);
+    CANSparkMaxUtil.setCANSparkMaxBusUsage(m_intakeMotor, Usage.kMinimal);
     m_intakeMotor.setSmartCurrentLimit(80);
-    CANSparkMaxUtil.SetCANSparkMaxBusUsage(m_conveyorMotor, Usage.kMinimal);
+    CANSparkMaxUtil.setCANSparkMaxBusUsage(m_conveyorMotor, Usage.kMinimal);
     m_conveyorMotor.setSmartCurrentLimit(80);
   }
 
