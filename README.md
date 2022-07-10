@@ -10,9 +10,9 @@ The game for 2022 is called Rapid React, where teams are tasked with shooting ca
 
 ## Unique features
 
-This years robot's unique features include:
+This years offseason robot's unique features include:
 
-- Augmented state-space drivetrain controller
+- Swerve drive with SDS MK4 L4 modules
 - Fourbar linkage intake/outtake
 - Funnel
 - Indexing conveyor
@@ -27,6 +27,7 @@ This years robot's unique features include:
 |Yes|Aim Drivetrain With Vision|Aim the drivetrain at the center of the vision target in order to shoot cargo in correctly.|
 |Yes|Separate Flywheel State Space Controllers|Use separate state spaces controllers to run a front and back flywheel and different speeds for variable shooting.|
 |Yes|Simulate Climber And Intake|Use the Mechanism2d widget to test climbers and intake before having a physical robot to test.|
+|In progress|Shooting while Moving|Shoot cargo into the goal while moving, should be more achievable with swerve.|
 
 ## Roster
 
