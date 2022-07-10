@@ -12,8 +12,10 @@ import frc3512.robot.commands.climbers.RunClimbers;
 import frc3512.robot.commands.intake.DeployIntake;
 import frc3512.robot.commands.intake.IntakeCargo;
 import frc3512.robot.commands.intake.OuttakeCargo;
+import frc3512.robot.commands.swerve.DriveSwerve;
 import frc3512.robot.subsystems.Climber;
 import frc3512.robot.subsystems.Intake;
+import frc3512.robot.subsystems.Swerve;
 import frc3512.robot.subsystems.Vision;
 
 /**
@@ -31,14 +33,21 @@ public class RobotContainer {
   private final Climber m_climber = new Climber();
   private final Intake m_intake = new Intake();
   private final Vision m_vision = new Vision();
+  private final Swerve m_swerve = new Swerve();
 
-  // Joysticks + XboxController
-  private final XboxController m_controller =
-      new XboxController(Constants.Joysticks.kXboxControllerPort);
+  // Joysticks
+  private final Joystick m_driver = new Joystick(Constants.Joysticks.kXboxControllerPort);
   private final Joystick m_appendageStick1 = new Joystick(Constants.Joysticks.kAppendageStick1Port);
   private final Joystick m_appendageStick2 = new Joystick(Constants.Joysticks.kAppendageStick2Port);
 
+  // Drive Controls
+  private final int translationAxis = XboxController.Axis.kLeftY.value;
+  private final int strafeAxis = XboxController.Axis.kLeftX.value;
+  private final int rotationAxis = XboxController.Axis.kRightX.value;
+
   // Joystick + XboxController buttons
+  private final JoystickButton m_zeroImu =
+      new JoystickButton(m_driver, XboxController.Button.kY.value);
   private final JoystickButton m_deployClimbersButton = new JoystickButton(m_appendageStick2, 1);
   private final JoystickButton m_overrideLimitsButton = new JoystickButton(m_appendageStick2, 11);
   private final JoystickButton m_deployIntakeButton = new JoystickButton(m_appendageStick1, 1);
@@ -54,6 +63,9 @@ public class RobotContainer {
 
   /** Used for defining button actions. */
   private void configureButtonBindings() {
+    // Drive buttons
+    m_zeroImu.whenPressed(new InstantCommand(() -> m_swerve.resetImu()));
+
     // Climber buttons
     m_deployClimbersButton.whenPressed(new DeployClimbers(m_climber));
     m_overrideLimitsButton.whenPressed(new InstantCommand(m_climber::overrideLimits, m_climber));
@@ -66,6 +78,20 @@ public class RobotContainer {
 
   /** Used for joystick/xbox axis actions. */
   private void configureAxisActions() {
+
+    boolean fieldRelative = true;
+    boolean openLoop = true;
+
+    m_swerve.setDefaultCommand(
+        new DriveSwerve(
+            m_swerve,
+            m_driver,
+            translationAxis,
+            strafeAxis,
+            rotationAxis,
+            fieldRelative,
+            openLoop));
+
     m_climber.setDefaultCommand(
         new RunClimbers(
             m_climber,
