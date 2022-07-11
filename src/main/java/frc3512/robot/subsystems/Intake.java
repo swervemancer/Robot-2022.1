@@ -13,7 +13,7 @@ import frc3512.robot.Constants;
 
 public class Intake extends SubsystemBase {
 
-  Timer conveyorTimer;
+  Timer kConveyorTimer;
 
   CANSparkMax m_conveyorMotor =
       new CANSparkMax(Constants.Intake.kConveyorMotorID, CANSparkMaxLowLevel.MotorType.kBrushless);
@@ -93,8 +93,8 @@ public class Intake extends SubsystemBase {
   }
 
   public void resetTimer() {
-    conveyorTimer.reset();
-    conveyorTimer.start();
+    kConveyorTimer.reset();
+    kConveyorTimer.start();
   }
 
   @Override

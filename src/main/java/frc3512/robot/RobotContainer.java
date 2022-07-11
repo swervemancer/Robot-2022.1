@@ -13,6 +13,7 @@ import frc3512.robot.commands.intake.IntakeCargo;
 import frc3512.robot.commands.intake.OuttakeCargo;
 import frc3512.robot.subsystems.Climber;
 import frc3512.robot.subsystems.Intake;
+import frc3512.robot.subsystems.Vision;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,6 +26,7 @@ public class RobotContainer {
   // Robot subsystems
   private final Climber m_climber = new Climber();
   private final Intake m_intake = new Intake();
+  private final Vision m_vision = new Vision();
 
   // Joysticks + XboxController
   private final XboxController m_controller =
@@ -35,9 +37,9 @@ public class RobotContainer {
   // Joystick + XboxController buttons
   private final JoystickButton m_deployClimbersButton = new JoystickButton(m_appendageStick2, 1);
   private final JoystickButton m_overrideLimitsButton = new JoystickButton(m_appendageStick2, 11);
-  private final JoystickButton m_deployIntakeButton = new JoystickButton(m_appendageStick2, 1);
-  private final JoystickButton m_intakeButton = new JoystickButton(m_appendageStick2, 3);
-  private final JoystickButton m_outtakeButton = new JoystickButton(m_appendageStick2, 4);
+  private final JoystickButton m_deployIntakeButton = new JoystickButton(m_appendageStick1, 1);
+  private final JoystickButton m_intakeButton = new JoystickButton(m_appendageStick1, 3);
+  private final JoystickButton m_outtakeButton = new JoystickButton(m_appendageStick1, 4);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
