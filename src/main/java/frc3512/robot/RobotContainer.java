@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc3512.robot.auto.AutonomousChooser;
 import frc3512.robot.commands.climbers.DeployClimbers;
 import frc3512.robot.commands.climbers.RunClimbers;
 import frc3512.robot.commands.intake.DeployIntake;
@@ -21,6 +22,9 @@ import frc3512.robot.subsystems.Intake;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+
+  // Autonomous chooser
+  private final AutonomousChooser m_autonChooser = new AutonomousChooser();
 
   // Robot subsystems
   private final Climber m_climber = new Climber();
@@ -68,7 +72,9 @@ public class RobotContainer {
   }
 
   /** Adds in autonomous modes */
-  private void addAutons() {}
+  private void addAutons() {
+    m_autonChooser.updateAutonList();
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
