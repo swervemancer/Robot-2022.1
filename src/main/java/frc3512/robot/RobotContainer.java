@@ -75,7 +75,7 @@ public class RobotContainer {
 
   /** Adds in autonomous modes */
   private void addAutons() {
-    m_autonChooser.updateAutonList();
+    //m_autonChooser.updateAutonList();
   }
 
   /**

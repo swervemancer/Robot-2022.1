@@ -18,7 +18,7 @@ public class Vision extends SubsystemBase {
 
   public static double kTargetHeight = 2.6;
   public static double kCameraHeight = 0.76835;
-  public static double kCameraPitch = 44.6;
+  public static double kCameraPitch = 39.6;
   public static double kCameraDiagnoalFOV = 74.8;
   public static double kYawOffset = 3.5;
 
