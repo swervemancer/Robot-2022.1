@@ -20,7 +20,11 @@ public class IntakeCargo extends CommandBase {
   @Override
   public void execute() {
     m_intake.runIntake();
-    m_intake.setConveyor(m_ignoreSensors);
+    if (!m_intake.isUpperSensorBlocked() && m_intake.isLowerSensorBlocked()) {
+      m_intake.setConveyor(m_ignoreSensors);
+    } else {
+      m_intake.stopConveyor();
+    }
   }
 
   @Override
