@@ -15,6 +15,34 @@ public final class Constants {
     public static final int kAppendageStick2Port = 2;
   }
 
+  // Drivetrain related constants
+  public static final class DriveConstants {
+    /** The left-to-right distance between the drivetrain wheels */
+    public static final double DRIVETRAIN_TRACKWIDTH_METERS = 0.27305 * 2.0;
+    /** The front-to-back distance between the drivetrain wheels. */
+    public static final double DRIVETRAIN_WHEELBASE_METERS = 0.27305 * 2.0;
+
+    public static final int FRONT_LEFT_MODULE_DRIVE_MOTOR = 2;
+    public static final int FRONT_LEFT_MODULE_STEER_MOTOR = 6;
+    public static final int FRONT_LEFT_MODULE_STEER_ENCODER = 10;
+    public static final double FRONT_LEFT_MODULE_STEER_OFFSET = -Math.toRadians(283.00 + 180.00);
+
+    public static final int FRONT_RIGHT_MODULE_DRIVE_MOTOR = 1;
+    public static final int FRONT_RIGHT_MODULE_STEER_MOTOR = 5;
+    public static final int FRONT_RIGHT_MODULE_STEER_ENCODER = 9;
+    public static final double FRONT_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(140.97);
+
+    public static final int BACK_LEFT_MODULE_DRIVE_MOTOR = 3;
+    public static final int BACK_LEFT_MODULE_STEER_MOTOR = 7;
+    public static final int BACK_LEFT_MODULE_STEER_ENCODER = 11;
+    public static final double BACK_LEFT_MODULE_STEER_OFFSET = -Math.toRadians(246.47);
+
+    public static final int BACK_RIGHT_MODULE_DRIVE_MOTOR = 16;
+    public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 4;
+    public static final int BACK_RIGHT_MODULE_STEER_ENCODER = 8;
+    public static final double BACK_RIGHT_MODULE_STEER_OFFSET = -Math.toRadians(238.89);
+  }
+
   /** Constants for the intake subsystem * */
   public static final class Intake {
     /// Arm motor CAN ID

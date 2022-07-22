@@ -12,8 +12,12 @@ import frc3512.robot.commands.climbers.RunClimbers;
 import frc3512.robot.commands.intake.DeployIntake;
 import frc3512.robot.commands.intake.IntakeCargo;
 import frc3512.robot.commands.intake.OuttakeCargo;
+import frc3512.robot.commands.swerve.DriveSwerve;
+import frc3512.robot.commands.swerve.ResetModules;
+import frc3512.robot.commands.swerve.ZeroIMU;
 import frc3512.robot.subsystems.Climber;
 import frc3512.robot.subsystems.Intake;
+import frc3512.robot.subsystems.Swerve;
 import frc3512.robot.subsystems.Vision;
 
 /**
@@ -31,6 +35,7 @@ public class RobotContainer {
   private final Climber m_climber = new Climber();
   private final Intake m_intake = new Intake();
   private final Vision m_vision = new Vision();
+  private final Swerve m_swerve = new Swerve();
 
   // Joysticks + XboxController
   private final XboxController m_controller =
@@ -62,6 +67,12 @@ public class RobotContainer {
     m_deployIntakeButton.whenPressed(new DeployIntake(m_intake));
     m_intakeButton.whenHeld(new IntakeCargo(m_intake, false));
     m_outtakeButton.whenHeld(new OuttakeCargo(m_intake));
+
+    // Swerve buttons
+    new JoystickButton(m_controller, XboxController.Button.kB.value)
+        .whenPressed(new ZeroIMU(m_swerve));
+    new JoystickButton(m_controller, XboxController.Button.kA.value)
+        .whenHeld(new ResetModules(m_swerve));
   }
 
   /** Used for joystick/xbox axis actions. */
@@ -71,6 +82,13 @@ public class RobotContainer {
             m_climber,
             () -> MathUtil.applyDeadband(m_appendageStick1.getRawAxis(1), 0.1) * 0.8,
             () -> MathUtil.applyDeadband(m_appendageStick2.getRawAxis(1), 0.1) * 0.76));
+
+    m_swerve.setDefaultCommand(
+        new DriveSwerve(
+            m_swerve,
+            () -> m_controller.getLeftY(),
+            () -> m_controller.getLeftX(),
+            () -> m_controller.getRightX()));
   }
 
   /** Adds in autonomous modes */
