@@ -6,15 +6,14 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc3512.robot.auto.AutonomousChooser;
+import frc3512.lib.dashboard.AutonomousChooser;
+import frc3512.robot.auto.ExampleAuto;
 import frc3512.robot.commands.climbers.DeployClimbers;
 import frc3512.robot.commands.climbers.RunClimbers;
 import frc3512.robot.commands.intake.DeployIntake;
 import frc3512.robot.commands.intake.IntakeCargo;
 import frc3512.robot.commands.intake.OuttakeCargo;
-import frc3512.robot.commands.swerve.DriveSwerve;
-import frc3512.robot.commands.swerve.ResetModules;
-import frc3512.robot.commands.swerve.ZeroIMU;
+import frc3512.robot.commands.swerve.TeleopSwerve;
 import frc3512.robot.subsystems.Climber;
 import frc3512.robot.subsystems.Intake;
 import frc3512.robot.subsystems.Swerve;
@@ -38,10 +37,14 @@ public class RobotContainer {
   private final Swerve m_swerve = new Swerve();
 
   // Joysticks + XboxController
-  private final XboxController m_controller =
-      new XboxController(Constants.Joysticks.kXboxControllerPort);
+  private final Joystick driver = new Joystick(0);
   private final Joystick m_appendageStick1 = new Joystick(Constants.Joysticks.kAppendageStick1Port);
   private final Joystick m_appendageStick2 = new Joystick(Constants.Joysticks.kAppendageStick2Port);
+
+  /* Drive Controls */
+  private final int translationAxis = XboxController.Axis.kLeftY.value;
+  private final int strafeAxis = XboxController.Axis.kLeftX.value;
+  private final int rotationAxis = XboxController.Axis.kRightX.value;
 
   // Joystick + XboxController buttons
   private final JoystickButton m_deployClimbersButton = new JoystickButton(m_appendageStick2, 1);
@@ -49,6 +52,8 @@ public class RobotContainer {
   private final JoystickButton m_deployIntakeButton = new JoystickButton(m_appendageStick1, 1);
   private final JoystickButton m_intakeButton = new JoystickButton(m_appendageStick1, 3);
   private final JoystickButton m_outtakeButton = new JoystickButton(m_appendageStick1, 4);
+  private final JoystickButton zeroGyro =
+      new JoystickButton(driver, XboxController.Button.kY.value);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -68,11 +73,8 @@ public class RobotContainer {
     m_intakeButton.whenHeld(new IntakeCargo(m_intake, false));
     m_outtakeButton.whenHeld(new OuttakeCargo(m_intake));
 
-    // Swerve buttons
-    new JoystickButton(m_controller, XboxController.Button.kB.value)
-        .whenPressed(new ZeroIMU(m_swerve));
-    new JoystickButton(m_controller, XboxController.Button.kA.value)
-        .whenHeld(new ResetModules(m_swerve));
+    /* Driver Buttons */
+    zeroGyro.whenPressed(new InstantCommand(() -> m_swerve.zeroIMU()));
   }
 
   /** Used for joystick/xbox axis actions. */
@@ -83,17 +85,17 @@ public class RobotContainer {
             () -> MathUtil.applyDeadband(m_appendageStick1.getRawAxis(1), 0.1) * 0.8,
             () -> MathUtil.applyDeadband(m_appendageStick2.getRawAxis(1), 0.1) * 0.76));
 
+    boolean fieldRelative = true;
+    boolean openLoop = true;
     m_swerve.setDefaultCommand(
-        new DriveSwerve(
-            m_swerve,
-            () -> m_controller.getLeftY(),
-            () -> m_controller.getLeftX(),
-            () -> m_controller.getRightX()));
+        new TeleopSwerve(
+            m_swerve, driver, translationAxis, strafeAxis, rotationAxis, fieldRelative, openLoop));
   }
 
   /** Adds in autonomous modes */
   private void addAutons() {
-    // m_autonChooser.updateAutonList();
+    m_autonChooser.addAuton("Example", new ExampleAuto(m_swerve));
+    m_autonChooser.updateAutonList();
   }
 
   /**
@@ -102,6 +104,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new InstantCommand();
+    return m_autonChooser.getSelectedAuton();
   }
 }

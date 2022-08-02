@@ -1,4 +1,4 @@
-package frc3512.robot.auto;
+package frc3512.lib.dashboard;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
