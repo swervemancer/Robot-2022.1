@@ -88,8 +88,8 @@ public class RobotContainer {
     m_climber.setDefaultCommand(
         new RunClimbers(
             m_climber,
-            () -> MathUtil.applyDeadband(m_appendageStick1.getRawAxis(1), 0.1) * 0.8,
-            () -> MathUtil.applyDeadband(m_appendageStick2.getRawAxis(1), 0.1) * 0.76));
+            () -> MathUtil.applyDeadband(m_appendageStick1.getRawAxis(1), Constants.General.kJoystickDeadband) * 0.8,
+            () -> MathUtil.applyDeadband(m_appendageStick2.getRawAxis(1), Constants.General.kJoystickDeadband) * 0.76));
 
     boolean fieldRelative = true;
     boolean openLoop = true;

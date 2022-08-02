@@ -36,9 +36,9 @@ public class Climber extends SubsystemBase {
   boolean m_ignoreLimits = false;
 
   NetworkTableEntry m_leftTopSwitchEntry =
-      NetworkTableUtil.MakeBoolEntry("/Diagnostics/Climber/Left At Switch");
+      NetworkTableUtil.makeBoolEntry("/Diagnostics/Climber/Left At Switch");
   NetworkTableEntry m_rightTopSwitchEntry =
-      NetworkTableUtil.MakeBoolEntry("/Diagnostics/Climber/Right At Switch");
+      NetworkTableUtil.makeBoolEntry("/Diagnostics/Climber/Right At Switch");
 
   /** Subsystem class for the climber */
   public Climber() {
