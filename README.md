@@ -22,9 +22,10 @@ This years offseason robot's unique features include:
 ## Goals of the year
 |Status|Goal|Additional Description|
 |------|----|----------------------|
-|Yes|Aim Drivetrain With Vision|Aim the drivetrain at the center of the vision target in order to shoot cargo in correctly.|
-|Yes|Separate Flywheel State Space Controllers|Use separate state spaces controllers to run a front and back flywheel and different speeds for variable shooting.|
-|Yes|Simulate Climber And Intake|Use the Mechanism2d widget to test climbers and intake before having a physical robot to test.|
+|Yes|Port all existing stuff to Java|Port all subsystems to Java and the Command-Based format|
+|Yes|State-Space Controllers|Use separate state spaces controllers to run a front and back flywheel and different speeds for variable shooting, libraries rewritten in Java.|
+|Yes|Swerve Drive|Have working swerve drive teleop and auton code.|
+|No|Simulation and Logging|Use logging with AdvantageKit and simulation features to simulate the robot|
 |No|Shooting while Moving|Shoot cargo into the goal while moving, should be more achievable with swerve.|
 
 ## Roster

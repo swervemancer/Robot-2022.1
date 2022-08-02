@@ -10,7 +10,14 @@ import frc3512.lib.util.SwerveModuleConstants;
 /** Constants for the robot project */
 public final class Constants {
 
-  public static final double stickDeadband = 0.1;
+  /** General robot constants */
+  public static final class General {
+    // Joystick axis deadband
+    public static double kJoystickDeadband = 0.05;
+
+    // The period at which feedback controllers run
+    public static double kControllerPeriodic = 0.005;
+  }
 
   /** Constants revolving around joysticks * */
   public static final class Joysticks {
@@ -176,5 +183,41 @@ public final class Constants {
     public static final int kRightMagenticSwitch = 2;
 
     public static final int kClimberSolenoidChannel = 5;
+  }
+
+  /** Constants for the front flywheel subsystem */
+  public static final class FrontFlywheel {
+    public static final int kMotorID = 40;
+
+    public static final int kEncoderA = 4;
+    public static final int kEncoderB = 5;
+
+    public static final double kS = 0.15418;
+    public static final double kV = 0.020604;
+    public static final double kA = 0.0027615;
+
+    public static final double kMaxAngularVelocity = 12.0 / kV;
+
+    public static final double kShootHighFender = 291.7;
+    public static final double kShootHighTarmac = 291.7;
+    public static final double kShootLow = 240.0;
+  }
+
+  /** Constants for the back flywheel subsystem */
+  public static final class BackFlywheel {
+    public static final int kMotorID = 41;
+
+    public static final int kEncoderA = 0;
+    public static final int kEncoderB = 1;
+
+    public static final double kS = 0.26895;
+    public static final double kV = 0.020516;
+    public static final double kA = 0.0016076;
+
+    public static final double kMaxAngularVelocity = 12.0 / kV;
+
+    public static final double kShootHighFender = 100.0;
+    public static final double kShootHighTarmac = 204.715;
+    public static final double kShootLow = 290.0;
   }
 }

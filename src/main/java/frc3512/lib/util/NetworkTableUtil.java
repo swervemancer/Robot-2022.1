@@ -12,7 +12,7 @@ public class NetworkTableUtil {
    * @param name Path of network table entry.
    * @param defaultValue The entry's initial value.
    */
-  public static NetworkTableEntry MakeDoubleEntry(String name, double defaultValue) {
+  public static NetworkTableEntry makeDoubleEntry(String name, double defaultValue) {
     NetworkTableInstance instance = NetworkTableInstance.getDefault();
     NetworkTableEntry entry = instance.getEntry(name);
     entry.setDefaultDouble(defaultValue);
@@ -25,8 +25,8 @@ public class NetworkTableUtil {
    *
    * @param name Path of network table entry.
    */
-  public static NetworkTableEntry MakeDoubleEntry(String name) {
-    return MakeDoubleEntry(name, 0.0);
+  public static NetworkTableEntry makeDoubleEntry(String name) {
+    return makeDoubleEntry(name, 0.0);
   }
 
   /**
@@ -35,7 +35,7 @@ public class NetworkTableUtil {
    * @param name Path of network table entry.
    * @param defaultValue The entry's initial value.
    */
-  public static NetworkTableEntry MakeBoolEntry(String name, boolean defaultValue) {
+  public static NetworkTableEntry makeBoolEntry(String name, boolean defaultValue) {
     NetworkTableInstance instance = NetworkTableInstance.getDefault();
     NetworkTableEntry entry = instance.getEntry(name);
     entry.setDefaultBoolean(defaultValue);
@@ -49,8 +49,8 @@ public class NetworkTableUtil {
    * @param name Path of network table entry.
    * @param defaultValue The entry's initial value.
    */
-  public static NetworkTableEntry MakeBoolEntry(String name) {
-    return MakeBoolEntry(name, false);
+  public static NetworkTableEntry makeBoolEntry(String name) {
+    return makeBoolEntry(name, false);
   }
 
   /**
@@ -59,7 +59,7 @@ public class NetworkTableUtil {
    * @param name Path of network table entry.
    * @param defaultValue The entry's initial value.
    */
-  public static NetworkTableEntry MakeStringEntry(String name, String defaultValue) {
+  public static NetworkTableEntry makeStringEntry(String name, String defaultValue) {
     NetworkTableInstance instance = NetworkTableInstance.getDefault();
     NetworkTableEntry entry = instance.getEntry(name);
     entry.setDefaultString(defaultValue);
@@ -73,8 +73,8 @@ public class NetworkTableUtil {
    * @param name Path of network table entry.
    * @param defaultValue The entry's initial value.
    */
-  public static NetworkTableEntry MakeStringEntry(String name) {
-    return MakeStringEntry(name, "");
+  public static NetworkTableEntry makeStringEntry(String name) {
+    return makeStringEntry(name, "");
   }
 
   /**
@@ -83,7 +83,7 @@ public class NetworkTableUtil {
    * @param name Path of network table entry.
    * @param defaultValue The entry's initial value.
    */
-  public static NetworkTableEntry MakeDoubleArrayEntry(String name, double[] defaultValue) {
+  public static NetworkTableEntry makeDoubleArrayEntry(String name, double[] defaultValue) {
     NetworkTableInstance instance = NetworkTableInstance.getDefault();
     NetworkTableEntry entry = instance.getEntry(name);
     entry.setDefaultDoubleArray(defaultValue);
@@ -96,8 +96,8 @@ public class NetworkTableUtil {
    *
    * @param name Path of network table entry.
    */
-  public static NetworkTableEntry MakeDoubleArrayEntry(String name) {
+  public static NetworkTableEntry makeDoubleArrayEntry(String name) {
     double[] defaultList = {};
-    return MakeDoubleArrayEntry(name, defaultList);
+    return makeDoubleArrayEntry(name, defaultList);
   }
 }

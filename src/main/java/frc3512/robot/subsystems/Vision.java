@@ -34,11 +34,11 @@ public class Vision extends SubsystemBase {
 
   List<List<VisionMeasurements>> m_visionQueue = new ArrayList<>();
 
-  NetworkTableEntry m_yawEntry = NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Vision/Yaw");
-  NetworkTableEntry m_rangeEntry = NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Vision/Range");
-  NetworkTableEntry m_pitchEntry = NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Vision/Pitch");
+  NetworkTableEntry m_yawEntry = NetworkTableUtil.makeDoubleEntry("/Diagnostics/Vision/Yaw");
+  NetworkTableEntry m_rangeEntry = NetworkTableUtil.makeDoubleEntry("/Diagnostics/Vision/Range");
+  NetworkTableEntry m_pitchEntry = NetworkTableUtil.makeDoubleEntry("/Diagnostics/Vision/Pitch");
   NetworkTableEntry m_timestampEntry =
-      NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Vision/Timestamp");
+      NetworkTableUtil.makeDoubleEntry("/Diagnostics/Vision/Timestamp");
 
   public void subscribeToVisionData(List<VisionMeasurements> queue) {
     m_visionQueue.add(queue);
@@ -66,6 +66,7 @@ public class Vision extends SubsystemBase {
 
       var pitch = target.getPitch();
       currentMeasurement.m_pitch = pitch;
+      m_pitchEntry.setDouble(pitch);
 
       if (target.getYaw() < 0.0) {
         currentMeasurement.m_yaw = target.getYaw() - kYawOffset;
