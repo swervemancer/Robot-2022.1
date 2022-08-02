@@ -32,7 +32,7 @@ public class Vision extends SubsystemBase {
     public double m_pitch;
   }
 
-  List<VisionMeasurements> m_visionQueue = new ArrayList<>();
+  List<List<VisionMeasurements>> m_visionQueue = new ArrayList<>();
 
   NetworkTableEntry m_yawEntry = NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Vision/Yaw");
   NetworkTableEntry m_rangeEntry = NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Vision/Range");
@@ -40,16 +40,8 @@ public class Vision extends SubsystemBase {
   NetworkTableEntry m_timestampEntry =
       NetworkTableUtil.MakeDoubleEntry("/Diagnostics/Vision/Timestamp");
 
-  public double getLatestYaw() {
-    return m_visionQueue.get(m_visionQueue.size() - 1).m_yaw;
-  }
-
-  public double getLatestPitch() {
-    return m_visionQueue.get(m_visionQueue.size() - 1).m_pitch;
-  }
-
-  public double getLatestRange() {
-    return m_visionQueue.get(m_visionQueue.size() - 1).m_range;
+  public void subscribeToVisionData(List<VisionMeasurements> queue) {
+    m_visionQueue.add(queue);
   }
 
   public boolean hasTargets() {
@@ -90,7 +82,9 @@ public class Vision extends SubsystemBase {
 
       m_rangeEntry.setDouble(currentMeasurement.m_range);
 
-      m_visionQueue.add(currentMeasurement);
+      for (var queue : m_visionQueue) {
+        queue.add(currentMeasurement);
+      }
     }
   }
 

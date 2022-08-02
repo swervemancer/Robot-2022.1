@@ -14,11 +14,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc3512.robot.Constants;
 import frc3512.robot.SwerveModule;
+import java.util.List;
 
 public class Swerve extends SubsystemBase {
   public SwerveDriveOdometry swerveOdometry;
   public SwerveModule[] mSwerveMods;
   public ADIS16470_IMU imu;
+
+  public List<Vision.VisionMeasurements> visionMeasurements;
 
   public Swerve() {
     imu = new ADIS16470_IMU();

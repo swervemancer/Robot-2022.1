@@ -57,9 +57,15 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    addVisionQueues();
     configureButtonBindings();
     configureAxisActions();
     addAutons();
+  }
+
+  /** Add subsystems to the vision queue */
+  private void addVisionQueues() {
+    m_vision.subscribeToVisionData(m_swerve.visionMeasurements);
   }
 
   /** Used for defining button actions. */
