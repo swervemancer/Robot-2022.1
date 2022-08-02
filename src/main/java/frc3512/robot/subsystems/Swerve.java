@@ -66,6 +66,12 @@ public class Swerve extends SubsystemBase {
     imu.reset();
   }
 
+  public void zeroModules() {
+    for (SwerveModule mod : mSwerveMods) {
+      mod.setDesiredState(new SwerveModuleState(), false);
+    }
+  }
+
   public void resetOdometry(Pose2d pose) {
     swerveOdometry.resetPosition(pose, getYaw());
   }

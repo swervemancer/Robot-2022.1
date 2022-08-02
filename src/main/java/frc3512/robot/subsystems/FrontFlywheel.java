@@ -23,6 +23,7 @@ import frc3512.lib.util.CANSparkMaxUtil;
 import frc3512.lib.util.CANSparkMaxUtil.Usage;
 import frc3512.lib.util.NetworkTableUtil;
 import frc3512.robot.Constants;
+import java.util.List;
 
 public class FrontFlywheel extends ControlledSubsystem<N1, N1, N1> {
 
@@ -42,6 +43,8 @@ public class FrontFlywheel extends ControlledSubsystem<N1, N1, N1> {
 
   FlywheelController m_controller = new FlywheelController(FlywheelPose.Front);
   InterpolatingTreeMap<Double, Double> m_table = new InterpolatingTreeMap<>();
+
+  public List<Vision.VisionMeasurements> visionMeasurements;
 
   Matrix<N1, N1> m_u;
 
@@ -179,6 +182,11 @@ public class FrontFlywheel extends ControlledSubsystem<N1, N1, N1> {
     m_observer.correct(m_controller.getInputs(), y);
     m_u = m_controller.calculate(m_observer.getXhat());
     setVoltage(m_u.get(Input.kVoltage, 0));
+
+    while (visionMeasurements.size() > 0) {
+      var measurement = visionMeasurements.get(0);
+      m_range = measurement.m_range;
+    }
 
     if (m_setGoalFromRange) {
       setGoal(m_table.get(m_range));
