@@ -1,7 +1,7 @@
 package frc3512.robot.commands.intake;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc3512.robot.subsystems.Intake;
+import frc3512.robot.subsystems.intake.Intake;
 
 public class OuttakeCargo extends CommandBase {
 

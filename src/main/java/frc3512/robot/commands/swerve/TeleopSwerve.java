@@ -4,7 +4,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc3512.robot.Constants;
-import frc3512.robot.subsystems.Swerve;
+import frc3512.robot.subsystems.swerve.Swerve;
 
 public class TeleopSwerve extends CommandBase {
 

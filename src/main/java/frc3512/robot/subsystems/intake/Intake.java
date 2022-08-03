@@ -1,4 +1,4 @@
-package frc3512.robot.subsystems;
+package frc3512.robot.subsystems.intake;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
@@ -96,7 +96,4 @@ public class Intake extends SubsystemBase {
     kConveyorTimer.reset();
     kConveyorTimer.start();
   }
-
-  @Override
-  public void periodic() {}
 }

@@ -1,4 +1,4 @@
-package frc3512.robot.subsystems;
+package frc3512.robot.subsystems.vision;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.DriverStation;

@@ -1,9 +1,10 @@
-package frc3512.robot.subsystems;
+package frc3512.robot.subsystems.climber;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -93,7 +94,9 @@ public class Climber extends SubsystemBase {
 
   @Override
   public void periodic() {
-    m_leftTopSwitchEntry.setBoolean(hasLeftPassedTopLimit());
-    m_rightTopSwitchEntry.setBoolean(hasRightPassedTopLimit());
+    if (DriverStation.isTest()) {
+      m_leftTopSwitchEntry.setBoolean(hasLeftPassedTopLimit());
+      m_rightTopSwitchEntry.setBoolean(hasRightPassedTopLimit());
+    }
   }
 }

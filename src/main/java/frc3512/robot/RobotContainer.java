@@ -21,12 +21,12 @@ import frc3512.robot.commands.shooter.ShooterVision;
 import frc3512.robot.commands.shooter.ShootingVisionAim;
 import frc3512.robot.commands.shooter.StopShooter;
 import frc3512.robot.commands.swerve.TeleopSwerve;
-import frc3512.robot.subsystems.BackFlywheel;
-import frc3512.robot.subsystems.Climber;
-import frc3512.robot.subsystems.FrontFlywheel;
-import frc3512.robot.subsystems.Intake;
-import frc3512.robot.subsystems.Swerve;
-import frc3512.robot.subsystems.Vision;
+import frc3512.robot.subsystems.climber.Climber;
+import frc3512.robot.subsystems.flywheels.BackFlywheel;
+import frc3512.robot.subsystems.flywheels.FrontFlywheel;
+import frc3512.robot.subsystems.intake.Intake;
+import frc3512.robot.subsystems.swerve.Swerve;
+import frc3512.robot.subsystems.vision.Vision;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -48,8 +48,8 @@ public class RobotContainer {
   private final Intake m_intake = new Intake();
   private final Vision m_vision = new Vision();
   private final Swerve m_swerve = new Swerve();
-  public final FrontFlywheel m_frontFlywheel = new FrontFlywheel();
-  public final BackFlywheel m_backFlywheel = new BackFlywheel();
+  private final FrontFlywheel m_frontFlywheel = new FrontFlywheel();
+  private final BackFlywheel m_backFlywheel = new BackFlywheel();
 
   // Joysticks + XboxController
   private final Joystick driver = new Joystick(0);

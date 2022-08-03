@@ -1,8 +1,8 @@
 package frc3512.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc3512.robot.subsystems.BackFlywheel;
-import frc3512.robot.subsystems.FrontFlywheel;
+import frc3512.robot.subsystems.flywheels.BackFlywheel;
+import frc3512.robot.subsystems.flywheels.FrontFlywheel;
 
 public class StopShooter extends CommandBase {
 

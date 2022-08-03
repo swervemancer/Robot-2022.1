@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import frc3512.robot.Constants;
-import frc3512.robot.subsystems.Swerve;
+import frc3512.robot.subsystems.swerve.Swerve;
+
 import java.util.List;
 
 public class ExampleAuto extends SequentialCommandGroup {

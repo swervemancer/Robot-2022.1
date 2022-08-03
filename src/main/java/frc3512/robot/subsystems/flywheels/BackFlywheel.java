@@ -1,4 +1,4 @@
-package frc3512.robot.subsystems;
+package frc3512.robot.subsystems.flywheels;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -11,6 +11,7 @@ import edu.wpi.first.math.filter.LinearFilter;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.system.LinearSystem;
 import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.Timer;
@@ -23,6 +24,8 @@ import frc3512.lib.util.CANSparkMaxUtil;
 import frc3512.lib.util.CANSparkMaxUtil.Usage;
 import frc3512.lib.util.NetworkTableUtil;
 import frc3512.robot.Constants;
+import frc3512.robot.subsystems.vision.Vision;
+
 import java.util.List;
 
 public class BackFlywheel extends ControlledSubsystem<N1, N1, N1> {
@@ -195,7 +198,10 @@ public class BackFlywheel extends ControlledSubsystem<N1, N1, N1> {
 
   @Override
   public void periodic() {
-    double percent = getGoal() / Constants.FrontFlywheel.kMaxAngularVelocity * 100.0;
-    m_percentageEntry.setDouble(percent);
+    controllerPeriodic();
+    if (DriverStation.isTest()) {
+      double percent = getGoal() / Constants.FrontFlywheel.kMaxAngularVelocity * 100.0;
+      m_percentageEntry.setDouble(percent);
+    }
   }
 }

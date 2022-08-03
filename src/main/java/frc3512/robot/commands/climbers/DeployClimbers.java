@@ -1,7 +1,7 @@
 package frc3512.robot.commands.climbers;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc3512.robot.subsystems.Climber;
+import frc3512.robot.subsystems.climber.Climber;
 
 public class DeployClimbers extends CommandBase {
 

@@ -2,9 +2,9 @@ package frc3512.robot.commands.intake;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc3512.robot.subsystems.BackFlywheel;
-import frc3512.robot.subsystems.FrontFlywheel;
-import frc3512.robot.subsystems.Intake;
+import frc3512.robot.subsystems.flywheels.BackFlywheel;
+import frc3512.robot.subsystems.flywheels.FrontFlywheel;
+import frc3512.robot.subsystems.intake.Intake;
 
 public class RunConveyor extends CommandBase {
 
